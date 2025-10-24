@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  },
+  basePath: process.env.NODE_ENV === 'production' ? '/AgroHub' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/AgroHub/' : '',
 
   /* config options here */
 };
