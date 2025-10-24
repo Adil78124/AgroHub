@@ -1,0 +1,71 @@
+---
+alwaysApply: true
+---
+
+# 🧪 Project Testing Rules
+
+## General Principles
+
+- All tests must be written in **TypeScript**.
+- Tests are stored **next to the code** inside `__tests__` folders, using the suffix `.test.ts(x)`.
+- End-to-end (e2e) tests are stored in a dedicated `tests/e2e` folder at the project root.
+- Main tools used:
+  - **Vitest** — unit and integration tests.
+  - **React Testing Library (RTL)** — component (UI) tests.
+  - **Playwright** — e2e tests.
+
+## Types of Tests
+
+**Unit Tests**
+
+- Test individual functions, hooks, or utilities.
+- Example: `utils/formatDate.ts` → `__tests__/formatDate.test.ts`.
+
+**Integration Tests**
+
+- Test how multiple modules/components work together.
+- Example: `features/auth/hooks/useLogin.ts` + API mock → `__tests__/useLogin.test.ts`.
+
+**Component Tests (RTL)**
+
+- Test UI rendering and user interactions with React components.
+- Example: `components/Button.tsx` → `__tests__/Button.test.tsx`.
+
+**E2E Tests (Playwright)**
+
+- Test the application flow as a whole.
+- Example: signup → login → navigate to profile.
+
+## What to Test
+
+**REQUIRED Tests:**
+
+- **UI Components** in `ui/components/` - Test rendering, props, user interactions
+- **UI Widgets** in `ui/widgets/` - Test business logic integration with UI
+- **Hooks** in `hooks/` - Test custom hook behavior and state management
+- **Utilities** in `utils/` - Test helper functions and data transformations
+
+**NOT REQUIRED Tests:**
+
+- **Schemas** in `schemas/` - Zod schemas are self-validating
+- **Constants** in `constants/` - Static data doesn't need testing
+- **Models/Stores** in `model/` - State management logic is tested through hooks
+- **Types** in `types/` - TypeScript types are compile-time only
+
+## Test Writing Style
+
+- Use `describe` blocks for grouping tests.
+- Tests must be **clear, isolated, and independent**.
+- Use mocks (`jest.mock` / `vi.mock`) for API calls or dependencies.
+- UI tests must follow RTL best practices: `screen`, `userEvent`, `findByRole`.
+- Все названия и описания тестов должны быть написаны на русском языке.
+  - Тексты в `describe`, `it` и `test` — только на русском.
+  - Требование распространяется на все типы тестов: unit, component, integration и e2e.
+
+# 🚦 TDD Rule (Test-Driven Development)
+
+1. **Write tests first** (define the expected behavior).
+2. **Then implement the component or logic** to make the tests pass.
+3. Run the test suite (`npm run test`).
+4. **Fix the code until all tests are green**.
+5. Repeat the cycle whenever new functionality is introduced.
