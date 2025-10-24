@@ -7,8 +7,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/AgroHub' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/AgroHub/' : '',
+  // Убираем basePath и assetPrefix для правильной работы GitHub Pages
+  // basePath: process.env.NODE_ENV === 'production' ? '/AgroHub' : '',
+  // assetPrefix: process.env.NODE_ENV === 'production' ? '/AgroHub/' : '',
 
   /* config options here */
 };

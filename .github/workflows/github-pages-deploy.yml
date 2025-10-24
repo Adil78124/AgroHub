@@ -46,6 +46,27 @@ jobs:
         
     - name: Create .nojekyll file
       run: touch ./out/.nojekyll
+      
+    - name: Create root index.html for GitHub Pages
+      run: |
+        cat > ./out/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>AgroHub - Redirecting...</title>
+            <script>
+                // Автоматический редирект на русскую версию
+                window.location.href = '/ru/';
+            </script>
+        </head>
+        <body>
+            <p>Redirecting to AgroHub...</p>
+            <p>If you are not redirected automatically, <a href="/ru/">click here</a>.</p>
+        </body>
+        </html>
+        EOF
         
     - name: Setup Pages
       uses: actions/configure-pages@v4
