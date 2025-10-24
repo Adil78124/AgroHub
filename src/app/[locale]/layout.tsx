@@ -27,6 +27,10 @@ export const metadata: Metadata = {
     "This is a starter template for Next.js with Crystal Architecture.",
 };
 
+export async function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,

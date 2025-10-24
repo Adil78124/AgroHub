@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import { describe, expect,it } from "vitest";
 
 import { ResearchStatsView } from "../research-stats-view-widget";
 
@@ -8,7 +9,7 @@ describe("Виджет статистики науки", () => {
     render(<ResearchStatsView />);
     expect(screen.getByText("Публикации (год)")).toBeInTheDocument();
     expect(screen.getByText("Активные проекты")).toBeInTheDocument();
-    expect(screen.getByText("Средний индекс цитирования")).toBeInTheDocument();
-    expect(screen.getByText("Средний h-index")).toBeInTheDocument();
+    expect(screen.getByText("Доля open-access")).toBeInTheDocument();
+    expect(screen.getByText("Межвуз. коллаборации")).toBeInTheDocument();
   });
 });

@@ -77,7 +77,7 @@ function HeroBlock({
   text,
   img,
   btnStats,
-  btnService,
+  btnService, // eslint-disable-line @typescript-eslint/no-unused-vars
 }: {
   title: string;
   text: string;
@@ -203,6 +203,7 @@ function ServiceBlock({
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function MarketBlock({
   title,
   subtitle,
@@ -830,6 +831,7 @@ function AnalyticsSection() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function ImageSection() {
   const t = useTranslations();
 

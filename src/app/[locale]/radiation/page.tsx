@@ -20,7 +20,7 @@ export default function RadiationPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState("");
   const [activeTab, setActiveTab] = useState("ecological");
-  const [selectedCity, setSelectedCity] = useState(null); // Selected city for chart updates
+  const [selectedCity, setSelectedCity] = useState<CityData | null>(null); // Selected city for chart updates
   const router = useRouter();
 
   // Данные для графиков по умолчанию
@@ -191,6 +191,21 @@ export default function RadiationPage() {
     }
   };
 
+  // Типы для данных города
+  interface CityData {
+    name: string;
+    currentLevel: number;
+    status: string;
+    color: string;
+    monthlyChartData: Array<{
+      month: string;
+      base: number;
+      middle: number;
+      top: number;
+    }>;
+  }
+
+  type CityKey = keyof typeof citiesData;
 
   useEffect(() => {
     // Проверяем авторизацию при загрузке страницы
@@ -216,7 +231,7 @@ export default function RadiationPage() {
     router.push("/ru/radiation/login");
   };
 
-  const handleCityClick = (cityKey) => {
+  const handleCityClick = (cityKey: CityKey) => {
     setSelectedCity(citiesData[cityKey]);
   };
 
