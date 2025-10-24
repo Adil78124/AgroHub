@@ -1,4 +1,4 @@
-## Crystal Architecture для Next.js 13+ (App Router)
+image.pngl Architecture для Next.js 13+ (App Router)
 
 Этот репозиторий — эталон реализации «Crystal Architecture» для Next.js 13+ с App Router. Архитектура делает проект модульным, предсказуемым и масштабируемым: каждая функциональность изолирована в собственном модуле внутри `src/modules/`, общие части — в `src/shared/`.
 
