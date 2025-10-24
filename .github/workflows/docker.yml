@@ -1,11 +1,12 @@
 name: Docker Build and Deploy
 
-on:
-  push:
-    branches: [ master, main ]
-    tags: [ 'v*' ]
-  pull_request:
-    branches: [ master, main ]
+# Отключен - используем github-pages-deploy.yml
+# on:
+#   push:
+#     branches: [ master, main ]
+#     tags: [ 'v*' ]
+#   pull_request:
+#     branches: [ master, main ]
 
 jobs:
   build-and-push:

@@ -1,10 +1,11 @@
 name: Continuous Integration
 
-on:
-  push:
-    branches: [ master, main, develop ]
-  pull_request:
-    branches: [ master, main ]
+# Отключен - используем github-pages-deploy.yml
+# on:
+#   push:
+#     branches: [ master, main, develop ]
+#   pull_request:
+#     branches: [ master, main ]
 
 jobs:
   lint-and-test:

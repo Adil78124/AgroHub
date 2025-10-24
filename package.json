@@ -25,7 +25,7 @@
     "test:e2e:ui": "playwright test --ui",
     "docker:build": "docker build -t agrohub .",
     "docker:run": "docker run -p 3000:3000 agrohub",
-    "prepare": "husky install"
+    "prepare": "husky install || true"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
