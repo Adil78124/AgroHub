@@ -44,13 +44,16 @@ jobs:
       env:
         NODE_ENV: production
         
+    - name: Create .nojekyll file
+      run: touch ./out/.nojekyll
+        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./.next
+        path: ./out
 
   deploy:
     environment:

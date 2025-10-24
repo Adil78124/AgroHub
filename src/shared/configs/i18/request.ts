@@ -1,16 +1,11 @@
-import { hasLocale } from "next-intl";
+// Для статического экспорта используем клиентскую конфигурацию
 import { getRequestConfig } from "next-intl/server";
-
 import { routing } from "@i18/routing";
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  const requested = await requestLocale;
-  const locale = hasLocale(routing.locales, requested)
-    ? requested
-    : routing.defaultLocale;
-
+export default getRequestConfig(async ({ locale }) => {
+  const validLocale = locale || routing.defaultLocale;
   return {
-    locale,
-    messages: (await import(`../../../../messages/${locale}.json`)).default,
+    locale: validLocale,
+    messages: (await import(`../../../../messages/${validLocale}.json`)).default,
   };
 });

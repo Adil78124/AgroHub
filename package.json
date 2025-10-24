@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:github": "next build",
+    "build:vercel": "cp next.config.vercel.ts next.config.ts && next build",
     "export": "next build && next export",
     "start": "next start",
     "lint": "next lint",

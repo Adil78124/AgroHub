@@ -1,44 +1,59 @@
-# Инструкции по деплою
+# Инструкции по деплою AgroHub
 
-## Варианты деплоя
+## GitHub Pages
 
-### 1. Vercel (Рекомендуется)
-Для деплоя на Vercel:
+Для деплоя на GitHub Pages используется статический экспорт Next.js.
 
-1. Создайте аккаунт на [vercel.com](https://vercel.com)
-2. Подключите ваш GitHub репозиторий
-3. Добавьте секреты в GitHub:
-   - `VERCEL_TOKEN` - токен из Vercel
-   - `VERCEL_ORG_ID` - ID организации
-   - `VERCEL_PROJECT_ID` - ID проекта
-4. Используйте workflow `.github/workflows/vercel-deploy.yml`
+### Настройка
 
-### 2. GitHub Pages
-Для деплоя на GitHub Pages:
+1. Убедитесь, что в `next.config.ts` включен `output: "export"`
+2. Middleware временно отключен для статического экспорта
+3. Используется `basePath` и `assetPrefix` для правильных путей
 
-1. Включите GitHub Pages в настройках репозитория
-2. Выберите источник "GitHub Actions"
-3. Используйте workflow `.github/workflows/nextjs-deploy.yml`
+### Автоматический деплой
 
-### 3. Netlify
-Для деплоя на Netlify:
+Проект автоматически деплоится при пуше в ветку `master` через GitHub Actions workflow `.github/workflows/github-pages-deploy.yml`.
 
-1. Создайте аккаунт на [netlify.com](https://netlify.com)
-2. Подключите GitHub репозиторий
-3. Настройте:
-   - Build command: `npm run build`
-   - Publish directory: `.next`
-   - Node version: `18`
+### Ручной деплой
 
-## Настройка секретов в GitHub
+```bash
+npm run build
+# Файлы будут в папке ./out
+```
 
-1. Перейдите в Settings → Secrets and variables → Actions
-2. Добавьте необходимые секреты для выбранного провайдера
+## Vercel
 
-## Текущие workflow'ы
+Для деплоя на Vercel используется обычная сборка Next.js без статического экспорта.
 
-- `main-deploy.yml` - базовая сборка и тестирование
-- `vercel-deploy.yml` - деплой на Vercel
-- `nextjs-deploy.yml` - деплой на GitHub Pages
-- `ci.yml` - непрерывная интеграция
-- `docker.yml` - сборка Docker образа
+### Настройка
+
+1. Используйте `next.config.vercel.ts` для Vercel
+2. Middleware включен для правильной работы интернационализации
+3. Без `basePath` и `assetPrefix`
+
+### Ручной деплой
+
+```bash
+npm run build:vercel
+```
+
+## Проблемы и решения
+
+### GitHub Pages не открывается
+
+1. Проверьте, что создан файл `.nojekyll` в корне
+2. Убедитесь, что используется правильный `basePath`
+3. Проверьте, что все ресурсы загружаются с правильными путями
+
+### Vercel не работает
+
+1. Убедитесь, что middleware включен
+2. Проверьте конфигурацию интернационализации
+3. Убедитесь, что не используется статический экспорт
+
+## Структура файлов
+
+- `next.config.ts` - конфигурация для GitHub Pages (статический экспорт)
+- `next.config.vercel.ts` - конфигурация для Vercel (обычная сборка)
+- `vercel.json` - конфигурация Vercel
+- `.github/workflows/github-pages-deploy.yml` - GitHub Actions для GitHub Pages

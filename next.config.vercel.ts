@@ -2,14 +2,12 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-  output: "export", // Включаем для GitHub Pages
+  // Для Vercel не используем статический экспорт
   trailingSlash: true,
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/AgroHub' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/AgroHub/' : '',
-
+  // Убираем basePath и assetPrefix для Vercel
   /* config options here */
 };
 
