@@ -47,23 +47,31 @@ jobs:
     - name: Create .nojekyll file
       run: touch ./out/.nojekyll
       
-    - name: Create root index.html for GitHub Pages
+    - name: Create simple test index.html
       run: |
         cat > ./out/index.html << 'EOF'
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="ru">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>AgroHub - Redirecting...</title>
-            <script>
-                // Автоматический редирект на русскую версию
-                window.location.href = '/ru/';
-            </script>
+            <title>AgroHub - Тест</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+                .container { text-align: center; max-width: 600px; }
+                h1 { font-size: 3rem; margin-bottom: 1rem; }
+                p { font-size: 1.2rem; margin-bottom: 2rem; }
+                .btn { display: inline-block; padding: 15px 30px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 50px; border: 2px solid white; transition: all 0.3s ease; }
+                .btn:hover { background: white; color: #667eea; }
+            </style>
         </head>
         <body>
-            <p>Redirecting to AgroHub...</p>
-            <p>If you are not redirected automatically, <a href="/ru/">click here</a>.</p>
+            <div class="container">
+                <h1>🚀 AgroHub</h1>
+                <p>Сайт успешно задеплоен на GitHub Pages!</p>
+                <p>Если вы видите эту страницу, значит деплой работает корректно.</p>
+                <a href="/ru/" class="btn">Перейти к основному сайту</a>
+            </div>
         </body>
         </html>
         EOF
