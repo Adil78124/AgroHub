@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { AlertTriangle, Calendar, Database, Leaf, LogOut, MapPin, Package,Settings, Shield, ShieldCheck, User, Users, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+
 import { Button } from "@/shared/components/ui";
+import { Badge } from "@/shared/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs";
-import { Badge } from "@/shared/components/ui/badge";
-import { Shield, LogOut, User, Settings, Database, Users, MapPin, ShieldCheck, Calendar, AlertTriangle, Zap, Leaf, Package } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, AreaChart, Area, ComposedChart, Cell } from 'recharts';
 
 /**
  * Страница радиационного фона

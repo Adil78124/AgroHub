@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { Lock,Shield } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import { Button } from "@/shared/components/ui";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card";
-import { Shield, Lock } from "lucide-react";
 
 /**
  * Страница входа для специалистов экологического мониторинга
